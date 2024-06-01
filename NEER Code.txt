@@ -1,0 +1,28 @@
+const int irSensorPin = 2;  
+const int relayPin = 3;     
+
+void setup() 
+{
+  Serial.begin(9600);
+  pinMode(irSensorPin, INPUT);
+  pinMode(relayPin, OUTPUT);
+  digitalWrite(relayPin, LOW);
+}
+
+void loop() 
+{
+  int i = digitalRead(irSensorPin);
+  Serial.println(i);
+  if (i == LOW) 
+  { 
+    digitalWrite(relayPin, HIGH);
+    Serial.println("Water dispensing");
+  } 
+
+else 
+{
+    digitalWrite(relayPin, LOW);
+    Serial.println("Water off");
+}
+  delay(100);
+}
